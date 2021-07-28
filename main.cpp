@@ -74,34 +74,35 @@ double getPitch2(const double *dat, int const dat_lenght) {
 }
 
 double getPitch3(const double *dat, int const dat_length) {
-  double sum1 = dat[0];
-  for (int i = 1; i < dat_length / 2; i++) {
+  double sum1{};
+  for (int i = 0; i < dat_length / 2; i++) {
     sum1 += dat[i];
-    sum1 /= 2;
   }
+  sum1 /= dat_length / 2;
 
-  double sum2 = dat[dat_length / 2];
-  for (int i = (dat_length / 2) + 1; i < dat_length; i++) {
+  double sum2{};
+  for (int i = (dat_length / 2); i < dat_length; i++) {
     sum2 += dat[i];
-    sum2 /= 2;
   }
+  sum2 /= dat_length / 2;
 
-  return sum1 / sum2;
+  return sum2 - sum1;
 }
 
 double getPitch4(const double *dat, int const dat_length) {
-  double sum1 = dat[0];
-  for (int i = 1; i < dat_length - 5; i++) {
+  double sum1{};
+  for (int i = 0; i < dat_length - 5; i++) {
     sum1 += dat[i];
-    sum1 /= 2;
   }
+  sum1 /= (dat_length - 5);
 
-  double sum2 = dat[dat_length - 5];
-  for (int i = (dat_length - 5) + 1; i < dat_length; i++) {
+  double sum2{};
+  for (int i = (dat_length - 5); i < dat_length; i++) {
     sum2 = dat[i];
-    sum2 /= 2;
   }
-  return sum1 / sum2;
+  sum2 /= 5.0;
+
+  return sum2 - sum1;
 }
 
 int main(int, char *args[]) {
