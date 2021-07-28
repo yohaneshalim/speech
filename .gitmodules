@@ -1,0 +1,6 @@
+[submodule "World"]
+	path = World
+	url = https://github.com/mmorise/World
+[submodule "json"]
+	path = json
+	url = https://github.com/nlohmann/json
