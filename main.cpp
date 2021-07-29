@@ -9,6 +9,6 @@ int main(int, char** argc) {
   }
 
   std::cout << argc[1] << "\n";
-  PitchAnalyzer(argc[1]);
+  std::cout << PitchAnalyzer(argc[1]) << "\n";
   return 0;
 }

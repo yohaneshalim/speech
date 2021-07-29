@@ -145,11 +145,10 @@ const std::string PitchAnalyzer(const std::string &fileName) {
   // std::cout << "pitch 2: " << ret2.get() << "\n";
   // std::cout << "pitch 3: " << ret3.get() << "\n";
   // std::cout << "pitch 4: " << ret4.get() << "\n";
-
   jsonResult.at("examples").at(0).at("pitch1") = ret1.get();
   jsonResult.at("examples").at(0).at("pitch2") = ret2.get();
   jsonResult.at("examples").at(0).at("pitch3") = ret3.get();
   jsonResult.at("examples").at(0).at("pitch4") = ret4.get();
 
-  return jsonResult.dump();
+  return jsonResult.dump(2);
 }
