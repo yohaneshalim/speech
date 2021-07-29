@@ -11,8 +11,8 @@ include(ExternalProject)
 project(speech VERSION 1.0 DESCRIPTION "speech library")
 add_library(speech SHARED
   src/speech.cpp
-  src/speech.hpp
-  src/jsonString.hpp
+  include/speech.hpp
+  include/jsonString.hpp
   src/parameterio.cpp
   src/audioio.cpp
   )
