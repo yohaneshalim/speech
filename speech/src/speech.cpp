@@ -121,7 +121,11 @@ double getPitch4(const double *dat, int const dat_length) {
   return sum2 - sum1;
 }
 
-const std::string PitchAnalyzer(const std::string &fileName) {
+#ifdef _WIN32
+__attribute__((dllexport))
+#endif
+const std::string
+PitchAnalyzer(const std::string &fileName) {
   if (std::FILE *file = std::fopen(fileName.c_str(), "r")) {
     std::fclose(file);
   } else {

@@ -13,6 +13,8 @@ add_library(speech SHARED
   src/speech.cpp
   include/speech.hpp
   include/jsonString.hpp
+  include/audioio.h
+  include/parameterio.h
   src/parameterio.cpp
   src/audioio.cpp
   )
