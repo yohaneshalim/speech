@@ -2,11 +2,23 @@
 #ifndef SPEECH_HPP
 #define SPEECH_HPP
 
-#ifdef __GNUC__
-const std::string PitchAnalyzer(const std::string&);
+#ifdef __WIN32
+#define DLLEXPORT __declspec(dllexport)
+#define ADDCALL __stdcall
 #else
-__attribute__((dllimport))
-const std::string __stdcall PitchAnalyzer(const std::string &);
+#define DLLEXPORT
+#define ADDCALL
+#endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+DLLEXPORT
+int ADDCALL PitchAnalyzer(char* const, char* const);
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif  // SPEECH_HPP

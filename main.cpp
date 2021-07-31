@@ -9,6 +9,9 @@ int main(int, char** argc) {
   }
 
   std::cout << argc[1] << "\n";
-  std::cout << PitchAnalyzer(argc[1]) << "\n";
+  char* xxx = new char[2000]{};
+  PitchAnalyzer(argc[1], xxx);
+  std::cout << xxx << "\n";
+  delete[] xxx;
   return 0;
 }

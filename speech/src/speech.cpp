@@ -121,19 +121,20 @@ double getPitch4(const double *dat, int const dat_length) {
   return sum2 - sum1;
 }
 
-#ifdef _WIN32
-__attribute__((dllexport))
+#ifdef __cplusplus
+extern "C" {
 #endif
-const std::string
-PitchAnalyzer(const std::string &fileName) {
-  if (std::FILE *file = std::fopen(fileName.c_str(), "r")) {
+
+DLLEXPORT
+int ADDCALL PitchAnalyzer(char *const fileName, char *const dst) {
+  if (std::FILE *file = std::fopen(fileName, "r")) {
     std::fclose(file);
   } else {
     std::cerr << "error file " << fileName << " tidak ditemukan\n";
     std::exit(-1);
   }
 
-  _wavFile wav(fileName.c_str());
+  _wavFile wav(fileName);
   DioOption option{};
   InitializeDioOption(&option);
 
@@ -145,14 +146,14 @@ PitchAnalyzer(const std::string &fileName) {
   std::future<double> ret3 = std::async(&getPitch3, f0.f0, f0.numOfFrame);
   std::future<double> ret4 = std::async(&getPitch4, f0.f0, f0.numOfFrame);
 
-  // std::cout << "pitch 1: " << ret1.get() << "\n";
-  // std::cout << "pitch 2: " << ret2.get() << "\n";
-  // std::cout << "pitch 3: " << ret3.get() << "\n";
-  // std::cout << "pitch 4: " << ret4.get() << "\n";
   jsonResult.at("examples").at(0).at("pitch1") = ret1.get();
   jsonResult.at("examples").at(0).at("pitch2") = ret2.get();
   jsonResult.at("examples").at(0).at("pitch3") = ret3.get();
   jsonResult.at("examples").at(0).at("pitch4") = ret4.get();
-
-  return jsonResult.dump(2);
+  std::strncpy(dst, jsonResult.dump().c_str(), jsonResult.dump().length());
+  return 0;
 }
+
+#ifdef __cplusplus
+}
+#endif
