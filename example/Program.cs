@@ -9,6 +9,10 @@ public class Coba
 {
     [DllImport(@"libspeech.dll", EntryPoint = "PitchAnalyzer", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
     public static extern int PitchAnalyzer(string namaFile, StringBuilder xxx);
+
+    [DllImport(@"libspeech.dll", EntryPoint = "PitchAnalyzer2", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+    [return: MarshalAs(UnmanagedType.LPStr)]
+    public static extern string PitchAnalyzer2(string namaFIle);
 };
 
 namespace ConsoleApp1
@@ -21,9 +25,11 @@ namespace ConsoleApp1
             Console.WriteLine("Hello World!");
             Coba.PitchAnalyzer("test.wav", xxx);
             Console.WriteLine(xxx);
-            Console.ReadKey();
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            string coba = Coba.PitchAnalyzer2("test.wav");
+            Console.WriteLine(coba);
+
+            Console.ReadKey();
         }
     }
 }
