@@ -10,3 +10,9 @@ set(CMAKE_CC_FLAGS "-Wall -Wextra")
 add_executable(main main.cpp)
 target_link_libraries(main speech)
 include_directories(speech/src)
+
+target_sources(main PRIVATE
+  123.wav
+  180+200.wav
+  test.wav
+ )
