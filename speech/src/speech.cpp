@@ -121,19 +121,7 @@ double getPitch4(const double *dat, int const dat_length) {
   return sum2 - sum1;
 }
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-DLLEXPORT
-int ADDCALL PitchAnalyzer(char *const fileName, char *const dst) {
-  if (std::FILE *file = std::fopen(fileName, "r")) {
-    std::fclose(file);
-  } else {
-    std::cerr << "error file " << fileName << " tidak ditemukan\n";
-    std::exit(-1);
-  }
-
+int __PitchAnalyzer(const char *fileName) {
   _wavFile wav(fileName);
   DioOption option{};
   InitializeDioOption(&option);
@@ -150,8 +138,40 @@ int ADDCALL PitchAnalyzer(char *const fileName, char *const dst) {
   jsonResult.at("examples").at(0).at("pitch2") = ret2.get();
   jsonResult.at("examples").at(0).at("pitch3") = ret3.get();
   jsonResult.at("examples").at(0).at("pitch4") = ret4.get();
+
+  return {};
+}
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+DLLEXPORT
+int ADDCALL PitchAnalyzer(char *const fileName, char *const dst) {
+  if (std::FILE *file = std::fopen(fileName, "r")) {
+    std::fclose(file);
+  } else {
+    std::cerr << "error file " << fileName << " tidak ditemukan\n";
+    std::exit(-1);
+  }
+  __PitchAnalyzer(fileName);
   std::strncpy(dst, jsonResult.dump().c_str(), jsonResult.dump().length());
   return 0;
+}
+
+DLLEXPORT
+char *ADDCALL PitchAnalyzer2(char const *fileName) {
+  if (std::FILE *file = std::fopen(fileName, "r")) {
+    std::fclose(file);
+  } else {
+    std::cerr << "error file " << fileName << " tidak ditemukan\n";
+    std::exit(-1);
+  }
+  __PitchAnalyzer(fileName);
+  char *json_return = new char[jsonResult.dump().length()]{};
+  std::strncpy(json_return, jsonResult.dump().c_str(),
+               jsonResult.dump().length());
+  return json_return;
 }
 
 #ifdef __cplusplus

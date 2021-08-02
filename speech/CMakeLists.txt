@@ -18,6 +18,8 @@ add_library(speech SHARED
   src/parameterio.cpp
   src/audioio.cpp
   )
-target_include_directories(speech PUBLIC "include/")
-target_link_directories(speech PUBLIC "lib/")
+#add_library(world STATIC IMPORTED)
+#set_target_properties(world PROPERTIES IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/lib/libworld.a)
+target_include_directories(speech PUBLIC "include")
+target_link_directories(speech PUBLIC "lib")
 target_link_libraries(speech world world_tool pthread)

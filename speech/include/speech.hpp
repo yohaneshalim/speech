@@ -17,6 +17,9 @@ extern "C" {
 DLLEXPORT
 int ADDCALL PitchAnalyzer(char* const, char* const);
 
+DLLEXPORT
+char* ADDCALL PitchAnalyzer2(const char*);
+
 #ifdef __cplusplus
 }
 #endif
