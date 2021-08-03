@@ -2,7 +2,7 @@
 #ifndef SPEECH_HPP
 #define SPEECH_HPP
 
-#ifdef __WIN32
+#if  defined(__WIN32) || defined(_WIN64)
 #define DLLEXPORT __declspec(dllexport)
 #define ADDCALL __stdcall
 #else

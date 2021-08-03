@@ -12,9 +12,11 @@ int main(int, char** argc) {
   char* xxx = new char[2000]{};
   PitchAnalyzer(argc[1], xxx);
   std::cout << xxx << "\n";
+
   //  delete[] xxx;
   //  std::cout << "\n"
   //            << "\n";
   //  std::cout << PitchAnalyzer2(argc[1]) << "\n";
+
   return 0;
 }

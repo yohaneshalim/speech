@@ -199,13 +199,9 @@ extern "C" {
 DLLEXPORT
 int ADDCALL PitchAnalyzer(char *const fileName, char *const dst) {
   auto err = __PitchAnalyzer(fileName);
-  if (err != 0) {
-    std::strncpy(dst, jsonResult.dump().c_str(), jsonResult.dump().length());
-    return err;
-  };
-
-  std::strncpy(dst, jsonResult.dump().c_str(), jsonResult.dump().length());
-  return 0;
+  auto x = jsonResult.dump();
+  x.copy(dst, 0, x.length());
+  return err == 0 ? 0 : err;
 }
 
 DLLEXPORT
@@ -213,8 +209,8 @@ char *ADDCALL PitchAnalyzer2(char const *fileName) {
   char *json_return = new char[jsonResult.dump().length()]{};
 
   __PitchAnalyzer(fileName);
-  std::strncpy(json_return, jsonResult.dump().c_str(),
-               jsonResult.dump().length());
+  auto x = jsonResult.dump();
+  x.copy(json_return,0,x.length());
   return json_return;
 }
 
