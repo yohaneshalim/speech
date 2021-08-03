@@ -1,0 +1,5 @@
+﻿D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\src\speech.cpp(151): warning : 'fopen' is deprecated: This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [-Wdeprecated-declarations]
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(204): note: 'fopen' has been explicitly marked deprecated here
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime.h(255): note: expanded from macro '_CRT_INSECURE_DEPRECATE'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime.h(245): note: expanded from macro '_CRT_DEPRECATE_TEXT'
+  speech.vcxproj -> D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\vs2017\speech\Release\speech.dll

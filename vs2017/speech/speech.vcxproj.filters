@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\src\parameterio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\src\audioio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\src\speech.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\include\speech.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\include\jsonString.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\include\audioio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\include\parameterio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\lib\libworld.a" />
+    <None Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\lib\libworld.dll" />
+    <None Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\lib\libworld_tool.a" />
+    <None Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\outDll\libc++.dll" />
+    <None Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\outDll\libspeech.dll" />
+    <None Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\outDll\libspeech.so" />
+    <None Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\speech\outDll\libunwind.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{7EC86643-19F7-34E3-920A-9ED2AAB99DAA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4F04BE8F-5191-3D9D-BC3C-69503B8967E3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

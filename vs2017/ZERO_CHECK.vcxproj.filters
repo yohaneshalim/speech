@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\vs2017\CMakeFiles\3b8142031565442696c8de383d7971c9\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C089C003-6FF0-3EFA-B258-35FB440150F3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
