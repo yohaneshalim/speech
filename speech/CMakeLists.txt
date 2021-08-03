@@ -17,5 +17,5 @@ add_library(speech SHARED
   )
 target_include_directories(speech PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(speech PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/world/src)
-target_link_libraries(speech world world_tool pthread)
+target_link_libraries(speech world world_tool)
 
