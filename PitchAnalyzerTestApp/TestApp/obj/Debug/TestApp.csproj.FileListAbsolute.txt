@@ -1,6 +1,0 @@
-D:\Projects\speech\PitchAnalyzerTestApp\TestApp\bin\Debug\TestApp.exe.config
-D:\Projects\speech\PitchAnalyzerTestApp\TestApp\bin\Debug\TestApp.exe
-D:\Projects\speech\PitchAnalyzerTestApp\TestApp\bin\Debug\TestApp.pdb
-D:\Projects\speech\PitchAnalyzerTestApp\TestApp\obj\Debug\TestApp.csproj.CoreCompileInputs.cache
-D:\Projects\speech\PitchAnalyzerTestApp\TestApp\obj\Debug\TestApp.exe
-D:\Projects\speech\PitchAnalyzerTestApp\TestApp\obj\Debug\TestApp.pdb

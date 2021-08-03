@@ -200,17 +200,16 @@ DLLEXPORT
 int ADDCALL PitchAnalyzer(char *const fileName, char *const dst) {
   auto err = __PitchAnalyzer(fileName);
   auto x = jsonResult.dump();
-  x.copy(dst, 0, x.length());
+  x.copy(dst, x.length() - 1, 0);
   return err == 0 ? 0 : err;
 }
 
 DLLEXPORT
 char *ADDCALL PitchAnalyzer2(char const *fileName) {
-  char *json_return = new char[jsonResult.dump().length()]{};
-
   __PitchAnalyzer(fileName);
+  char *json_return = new char[jsonResult.dump().length()]{};
   auto x = jsonResult.dump();
-  x.copy(json_return,0,x.length());
+  x.copy(json_return, x.length() - 1, 0);
   return json_return;
 }
 

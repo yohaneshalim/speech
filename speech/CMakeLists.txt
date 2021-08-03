@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(speech LANGUAGES CXX)
-include(ExternalProject)
-
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-project(speech VERSION 1.0 DESCRIPTION "speech library")
+project(speech LANGUAGES CXX VERSION 1.0 DESCRIPTION "speech library")
+
+add_subdirectory(world)
+
 add_library(speech SHARED
   src/parameterio.cpp
   src/audioio.cpp
@@ -15,18 +15,7 @@ add_library(speech SHARED
   include/audioio.h
   include/parameterio.h
   )
+target_include_directories(speech PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(speech PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/world/src)
+target_link_libraries(speech world world_tool pthread)
 
-target_include_directories(speech PUBLIC "include")
-target_link_directories(speech PUBLIC "lib")
-target_link_libraries(speech world world_tool)
-
-target_sources(speech PRIVATE
-  lib32/world.lib
-  lib32/world_tool.lib
-  lib/libworld.a
-  lib/libworld_tool.a
-  outDll/libc++.dll
-  outDll/libspeech.dll
-  outDll/libspeech.so
-  outDll/libunwind.dll
- )

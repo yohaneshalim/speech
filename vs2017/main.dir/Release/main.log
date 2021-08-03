@@ -1,4 +1,0 @@
-﻿D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\main.cpp(6): warning : zero as null pointer constant [-Wzero-as-null-pointer-constant]
-  C:\LLVM\lib\clang\12.0.1\include\stddef.h(86): note: expanded from macro 'NULL'
-D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\main.cpp(12): warning : generalized initializer lists are incompatible with C++98 [-Wc++98-compat]
-  main.vcxproj -> D:\kenzanin\Documents\Kerjoo\SejahteraEmpatiPratamaPT\speech\speech\vs2017\Release\main.exe

@@ -1,2 +1,0 @@
-# speech
-menggunakan world lib

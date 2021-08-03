@@ -1,5 +1,0 @@
-D:/kenzanin/Documents/Kerjoo/SejahteraEmpatiPratamaPT/speech/speech/vs2017/CMakeFiles/main.dir
-D:/kenzanin/Documents/Kerjoo/SejahteraEmpatiPratamaPT/speech/speech/vs2017/CMakeFiles/ALL_BUILD.dir
-D:/kenzanin/Documents/Kerjoo/SejahteraEmpatiPratamaPT/speech/speech/vs2017/CMakeFiles/ZERO_CHECK.dir
-D:/kenzanin/Documents/Kerjoo/SejahteraEmpatiPratamaPT/speech/speech/vs2017/speech/CMakeFiles/speech.dir
-D:/kenzanin/Documents/Kerjoo/SejahteraEmpatiPratamaPT/speech/speech/vs2017/speech/CMakeFiles/ALL_BUILD.dir

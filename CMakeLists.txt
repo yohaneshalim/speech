@@ -7,12 +7,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CC_FLAGS "-Wall -Wextra")
-add_executable(main main.cpp)
+add_executable(main src/main.cpp)
 target_link_libraries(main speech)
-include_directories(speech/src)
+target_include_directories(main PUBLIC speech/src)
+
 target_sources(main PRIVATE
   123.wav
-  180+200.wav
+  ID0001_channel1.wav
+  lagu.wav
   test.wav
-  vs2017.zip
- )
+)
