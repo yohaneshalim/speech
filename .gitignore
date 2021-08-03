@@ -1,5 +1,6 @@
 
 .vs/
 .out\
-out/*
 PitchAnalyzerTestApp/TestApp/bin/
+build/*
+CMakeLists.txt.user
