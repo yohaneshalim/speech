@@ -6,3 +6,9 @@ build/*
 CMakeLists.txt.user
 out/build/
 speech/out/
+speech/build/
+vs2017/speech/speech.dir/
+vs2017/speech/x64/
+PitchAnalyzerTestApp/TestApp/obj/
+TestApp/TestApp/bin/
+TestApp/TestApp/obj/
