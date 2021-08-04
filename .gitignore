@@ -4,3 +4,5 @@
 PitchAnalyzerTestApp/TestApp/bin/
 build/*
 CMakeLists.txt.user
+out/build/
+speech/out/
