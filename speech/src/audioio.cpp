@@ -50,6 +50,7 @@ static int CheckHeader(FILE *fp) {
   }
   fread(data_check, 1, 4, fp);  // 1 0 0 0
   // dirty fix for wav maker that add additional format marker eventhough none
+  // used
   bool additionalFormatFix{};
   if (0x12 == data_check[0]) additionalFormatFix = 1;
 
