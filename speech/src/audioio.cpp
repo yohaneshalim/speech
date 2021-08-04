@@ -15,19 +15,15 @@
 #include <stdio.h>
 #include <string.h>
 
-#if (defined (__WIN32__) || defined (_WIN32)) && !defined (__MINGW32__)
+#if (defined(__WIN32__) || defined(_WIN32)) && !defined(__MINGW32__)
 #pragma warning(disable : 4996)
 #endif
 
 namespace {
 
-static inline int MyMaxInt(int x, int y) {
-  return x > y ? x : y;
-}
+static inline int MyMaxInt(int x, int y) { return x > y ? x : y; }
 
-static inline int MyMinInt(int x, int y) {
-  return x < y ? x : y;
-}
+static inline int MyMinInt(int x, int y) { return x < y ? x : y; }
 
 //-----------------------------------------------------------------------------
 // CheckHeader() checks the .wav header. This function can only support the
@@ -53,11 +49,16 @@ static int CheckHeader(FILE *fp) {
     return 0;
   }
   fread(data_check, 1, 4, fp);  // 1 0 0 0
-  if (!(16 == data_check[0] && 0 == data_check[1] &&
-      0 == data_check[2] && 0 == data_check[3])) {
+  // dirty fix for wav maker that add additional format marker eventhough none
+  bool additionalFormatFix{};
+  if (0x12 == data_check[0]) additionalFormatFix = 1;
+
+  if (!((16 == data_check[0] || 0x12 == data_check[0]) && 0 == data_check[1] &&
+        0 == data_check[2] && 0 == data_check[3])) {
     printf("fmt (2) error.\n");
     return 0;
   }
+
   fread(data_check, 1, 2, fp);  // 1 0
   if (!(1 == data_check[0] && 0 == data_check[1])) {
     printf("Format ID error.\n");
@@ -68,7 +69,7 @@ static int CheckHeader(FILE *fp) {
     printf("This function cannot support stereo file\n");
     return 0;
   }
-  return 1;
+  return additionalFormatFix ? 12 : 1;
 }
 
 //-----------------------------------------------------------------------------
@@ -113,7 +114,7 @@ static int GetParameters(FILE *fp, int *fs, int *nbit, int *wav_length) {
 }  // namespace
 
 void wavwrite(const double *x, int x_length, int fs, int nbit,
-    const char *filename) {
+              const char *filename) {
   FILE *fp = fopen(filename, "wb");
   if (NULL == fp) {
     printf("File cannot be opened.\n");
@@ -161,8 +162,8 @@ void wavwrite(const double *x, int x_length, int fs, int nbit,
 
   int16_t tmp_signal;
   for (int i = 0; i < x_length; ++i) {
-    tmp_signal = static_cast<int16_t>(MyMaxInt(-32768,
-        MyMinInt(32767, static_cast<int>(x[i] * 32767))));
+    tmp_signal = static_cast<int16_t>(
+        MyMaxInt(-32768, MyMinInt(32767, static_cast<int>(x[i] * 32767))));
     fwrite(&tmp_signal, 2, 1, fp);
   }
 
@@ -175,17 +176,22 @@ int GetAudioLength(const char *filename) {
     return 0;
   }
 
-  if (0 == CheckHeader(fp)) {
+  // kenzanin fix
+  bool fix{};
+  int ch = CheckHeader(fp);
+  if (0 == ch) {
     fclose(fp);
     return -1;
+  } else if (0x12 == ch) {
+    fix = 1;
   }
 
-  char data_check[5] = { 0 };
+  char data_check[5] = {0};
   data_check[4] = '\0';
   unsigned char for_int_number[4];
 
   // Quantization
-  fseek(fp, 10, SEEK_CUR);
+  fseek(fp, 10 + (fix == 0 ? 0 : 2), SEEK_CUR);
   fread(for_int_number, 1, 2, fp);
   int nbit = for_int_number[0];
 
@@ -214,16 +220,20 @@ int GetAudioLength(const char *filename) {
   return wav_length;
 }
 
-void wavread(const char* filename, int *fs, int *nbit, double *x) {
+void wavread(const char *filename, int *fs, int *nbit, double *x) {
   FILE *fp = fopen(filename, "rb");
   if (NULL == fp) {
     printf("File not found.\n");
     return;
   }
-
-  if (0 == CheckHeader(fp)) {
+  // kenzanin fix
+  bool fix{};
+  int ch = CheckHeader(fp);
+  if (0 == ch) {
     fclose(fp);
     return;
+  } else if (0x12 == ch) {
+    fix = 1;
   }
 
   int x_length;
@@ -239,10 +249,10 @@ void wavread(const char* filename, int *fs, int *nbit, double *x) {
   for (int i = 0; i < x_length; ++i) {
     sign_bias = tmp = 0.0;
     fread(for_int_number, 1, quantization_byte, fp);  // "data"
-    if (for_int_number[quantization_byte-1] >= 128) {
+    if (for_int_number[quantization_byte - 1] >= 128) {
       sign_bias = pow(2.0, *nbit - 1);
       for_int_number[quantization_byte - 1] =
-        for_int_number[quantization_byte - 1] & 0x7F;
+          for_int_number[quantization_byte - 1] & 0x7F;
     }
     for (int j = quantization_byte - 1; j >= 0; --j)
       tmp = tmp * 256.0 + for_int_number[j];
