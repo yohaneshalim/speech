@@ -2,8 +2,8 @@
 
 #include "speech.hpp"
 
-int main() {
-  std::cout << PitchAnalyzer2("lagu.wav") << "\n";
+int main(int, char** argc) {
+  std::cout << PitchAnalyzer2(argc[1]) << "\n";
 
   return {};
 }
